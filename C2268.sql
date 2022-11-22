@@ -22,3 +22,7 @@ insert into Student_details values (7, 'Pathik', 7895642,'pathikmondal18@gmail.c
 insert into Student_details values (8, 'Sourav', 256472,'souravdey18@gmail.com','Garhbeta', 'BCA');
 insert into Student_details values (9, 'Saikat', 025863,'saikatpramanik18@gmail.com','Garhbeta', 'B.Com');
 insert into Student_details values (10, 'Rick', 258630,'rickchoudhary18@gmail.com','Garhbeta', 'BBA');
+# delete all the rows from the table
+truncate table Student_details;
+# delete both (structure & record)
+drop table Student_details;
