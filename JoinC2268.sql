@@ -35,3 +35,32 @@ select Fname, amount, course from Student_join inner join fees on Student_join.f
 select*from Student_join cross join fees;
 # self join
 select s1.Fname, s1.Age from Student_join s1 inner join Student_join s2 on s1.Age = s2.Age and s1.Id<>s2.Id order by s1.Id;
+
+#subquare
+select*from Student_join where Id in(select Id from Student_join where Age >23);
+
+#all details
+select*from fees where amount =(select max(amount) from fees);
+
+#select city in Kolkata
+select*from Student_join where City not in (select City from Student_join where City = 'Kolkata');
+
+#any claues
+# any-- comparing between a single column value and a range of other value-----(any & all)
+# any returns the bolean value if all of the subquery values meet the condition.
+select form_no,Fname from Student_join where Id> any (select form_no from fees);
+select amount,course from fees where amount> any (select amount from fees);
+
+# all clause
+select form_no,Fname from Student_join where Id> all(select form_no from fees);
+
+# not exists
+select Fname,Age from Student_join where not exists (select*from fees where Student_join.form_no =fees.form_no);
+
+update Student_join set form_no ='B2' where Fname= 'Akash';
+
+#RollUp
+select form_no,count(course),sum(amount)as 'new_column'from fees group by form_no with rollup;
+
+#Outer join
+
