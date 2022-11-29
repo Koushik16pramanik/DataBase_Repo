@@ -62,5 +62,10 @@ update Student_join set form_no ='B2' where Fname= 'Akash';
 #RollUp
 select form_no,count(course),sum(amount)as 'new_column'from fees group by form_no with rollup;
 
-#Outer join
-
+#Outer join--- 
+#Left Outer Join
+select Student_join.form_no,Fname,course from Student_join left join fees on Student_join.form_no =fees.form_no;
+#Right Outer Join
+select Student_join.form_no,Fname,course from Student_join left join fees on Student_join.form_no =fees.form_no;
+#Full Outer Join
+select Student_join.form_no,Student_join.Fname,fees.course,fees.amount from Student_join full join fees on Student_join.form_no =fees.form_no;
